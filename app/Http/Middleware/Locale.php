@@ -21,7 +21,8 @@ class Locale {
        // $language = Session::get('locale', Config::get('app.locale'));
 
        // App::setLocale('es');
-       dd( App::getLocale($lang)  );
+       $url = App::getLocale();
+       dd( $url  );
 
         return $next($request);
     }
