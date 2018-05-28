@@ -52,14 +52,4 @@ class HomeController extends Controller
         }   
         return view('home')->with( ['dmenu'=>$dmenu]);
     }
-
-    public function setLocale($lang)
-    {		
-        return redirect()->back();
-    }
-
-    public function getLocale()
-    {
-        dd(  session('lang') ); 
-    }
 }

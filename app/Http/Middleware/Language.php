@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App;
+use Session;
 use Closure;
 
 class Language
@@ -16,8 +17,9 @@ class Language
      */
     public function handle($request, Closure $next)
     {
-        /*$locale = App::getLocale();
-        App::setLocale('en');*/
-        return $next($request);       
+        if (!empty(session('lang'))) {
+            App::setLocale(session('lang'));
+        }
+        return $next($request);
     }
 }

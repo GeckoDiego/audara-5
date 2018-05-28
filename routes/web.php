@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,20 +10,16 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-@session_start ();
-Route::group(['middleware' => 'auth'], function () {
-    /* Language Switch Selector */     
-    Route::get ( 'lang/{lang}', function (Request $request) {    
-        session ([
-             'lang' => $lang
-        ]);
-        $request->session()->put('lang', $lang);
-        $input = $request->all();
-        dd($input);
-        $_SESSION['languaje'] = $lang;
+Route::group ([
+    'middleware' => 'language'], function () {
+        Route::get('lang/{lang}', function ($lang) {
+            session ([
+                'lang' => $lang
+                ]);
             return \Redirect::back ();
-    })->where ('lang', 'en|es');
-});
+        })->where ('lang', 'en|es');
+ });
+
 Auth::routes();
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/home', 'HomeController@index')->name('home');
