@@ -55,16 +55,12 @@ class HomeController extends Controller
     }
 
     public function setLocale($lang)
-    {
-        App::setLocale($lang);  
-        //$language = Session::get('locale', Config::get('app.locale'));
-       // Session::put('locale', $language);
-        //return Redirect::back();
-        return $next($request);
+    {		
+        return redirect()->back();
     }
 
     public function getLocale()
     {
-        dd(  Config::get('app.locale') ); 
+        dd(  session('lang') ); 
     }
 }

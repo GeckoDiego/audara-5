@@ -16,9 +16,9 @@
                 <ion-icon name="globe"></ion-icon>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{ url('lang/es') }}" class="dropdown-item">
+                <a href="{{ url('lang', ['es']) }}" class="dropdown-item">
                     <i class="ion ion-ios-flag text-lightest"></i> &nbsp; Spanish</a>
-                <a href="{{ url('lang/en') }}" class="dropdown-item">
+                <a href="{{ url('lang', ['en']) }}" class="dropdown-item">
                     <i class="ion ion-ios-flag text-lightest"></i> &nbsp; English</a>               
             </div>
         </div>

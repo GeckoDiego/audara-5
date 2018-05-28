@@ -18,12 +18,10 @@ class Locale {
      */
     public function handle($request, Closure $next)
     {
-       // $language = Session::get('locale', Config::get('app.locale'));
-
-       // App::setLocale('es');
-       $url = App::getLocale();
-       dd( $url  );
-
+        /*if (!empty(session('lang'))) {
+            App::setLocale(session('lang'));
+        }*/
+        //dd( session('lang') );
         return $next($request);
     }
 

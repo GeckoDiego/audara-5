@@ -10,14 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//@session_start ();
 Route::group(['middleware' => 'language'], function () {
-    Auth::routes();
+    /* Language Switch Selector */     
+    Route::get ( 'lang/{lang}', function ($lang) {
+        session ([
+             'lang' => $lang
+        ]);
+        $_SESSION ['languaje'] = $lang;
+            return \Redirect::back ();
+    })->where ('lang', 'en|es');
+});
+Auth::routes();
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/home', 'HomeController@index')->name('home');
 
-    /* Language Switch Selector */ 
-    Route::get('/lang/{lang}', 'HomeController@setLocale');
-    Route::get('/getlocale', 'HomeController@getLocale');
+    Route::get('/getLocale', 'HomeController@getLocale')->name('getLocale');    
 
     /* Sidenav Left Menu */
     Route::prefix('aws')->group(function () {
@@ -27,4 +35,3 @@ Route::group(['middleware' => 'language'], function () {
             return App::call('App\Http\Controllers\\'.$urlDecrypted.'Controller@index');
         });
     });
-});
