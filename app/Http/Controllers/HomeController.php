@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Crypt;
 
 use App;
 use Auth;
-Use Config;
 Use Session;
 use Redirect;
 
